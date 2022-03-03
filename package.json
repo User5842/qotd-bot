@@ -1,0 +1,21 @@
+{
+  "name": "qotd-bot",
+  "version": "1.0.0",
+  "description": "Discord Bot for the leetcode_reddit question of the day.",
+  "private": true,
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "keywords": [
+    "discord",
+    "leetcode_reddit"
+  ],
+  "author": "Rafael Negron",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^13.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.10.0"
+  }
+}
