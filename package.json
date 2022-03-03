@@ -4,7 +4,9 @@
   "description": "Discord Bot for the leetcode_reddit question of the day.",
   "private": true,
   "scripts": {
-    "lint": "eslint ."
+    "build": "npm run lint && npm run prettier",
+    "lint": "eslint .",
+    "prettier": "prettier --write ."
   },
   "keywords": [
     "discord",
@@ -16,6 +18,8 @@
     "discord.js": "^13.6.0"
   },
   "devDependencies": {
-    "eslint": "^8.10.0"
+    "eslint": "^8.10.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "2.5.1"
   }
 }
