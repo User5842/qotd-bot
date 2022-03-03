@@ -15,7 +15,9 @@
   "author": "Rafael Negron",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^13.6.0"
+    "discord.js": "^13.6.0",
+    "graphql-request": "^4.0.0",
+    "node-fetch": "^2.6.7"
   },
   "devDependencies": {
     "eslint": "^8.10.0",
