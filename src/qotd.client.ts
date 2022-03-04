@@ -1,4 +1,5 @@
-const { GraphQLClient, gql } = require("graphql-request");
+import { GraphQLClient, gql } from "graphql-request";
+import { IQOTD } from "./interfaces/QOTD.interface";
 
 class QOTDClient {
   /**
@@ -6,14 +7,15 @@ class QOTDClient {
    * @returns The link representing the LeetCode question of the day.
    */
   static async getQuestionOfTheDay() {
-    const graphQLClient = new GraphQLClient("https://leetcode.com/graphql");
-    return graphQLClient.request(gql`
+    const query = /* GraphQL */ `
       {
         activeDailyCodingChallengeQuestion {
           link
         }
       }
-    `);
+    `;
+    const graphQLClient = new GraphQLClient("https://leetcode.com/graphql");
+    return graphQLClient.request<IQOTD>(query);
   }
 }
 

@@ -1,8 +1,8 @@
-const { Client, Intents } = require("discord.js");
-const cron = require("node-cron");
+import { Client, Intents } from "discord.js";
+import cron from "node-cron";
 
-const { token } = require("./config.json");
-const { QOTDClient } = require("./qotd.client");
+import { token } from "../config.json";
+import { QOTDClient } from "./qotd.client";
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
