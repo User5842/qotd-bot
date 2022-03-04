@@ -1,25 +1,28 @@
 import { Client, Intents } from "discord.js";
-import cron from "node-cron";
+import { schedule } from "node-cron";
 
-import { token } from "../config.json";
-import { QOTDClient } from "./qotd.client";
+import { token } from "./config.json";
+import { QOTDClient } from "./clients/qotd.client";
+import { LEETCODE_BASE_URL, QOTD_CHANNEL_ID } from "./constants/constants";
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 client.once("ready", () => {
   const channel = client.channels.cache.find(
-    (channel) => channel.name === "question-of-the-day"
+    (channel) => channel.id === QOTD_CHANNEL_ID
   );
 
   /**
    * This will run every day at 0800.
    */
-  cron.schedule("0 8 * * *", async () => {
+  schedule("0 8 * * *", async () => {
     const {
       activeDailyCodingChallengeQuestion: { link },
     } = await QOTDClient.getQuestionOfTheDay();
 
-    channel.send(`https://leetcode.com${link}`);
+    if (channel?.isText()) {
+      channel.send(`${LEETCODE_BASE_URL}${link}`);
+    }
   });
 });
 
