@@ -6,4 +6,4 @@ Currently, the bot posts the [LeetCode](https://leetcode.com/problemset/all/) qu
 
 ![Snippet of QOTD bot in action][]
 
-[snippet of qotd bot in action]: images/QOTD.png
+[snippet of qotd bot in action]: images/QOTD.PNG
