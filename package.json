@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Discord Bot for the leetcode_reddit question of the day.",
   "private": true,
+  "engines": {
+    "node": ">=16.6"
+  },
   "scripts": {
     "build": "rimraf built && npm run lint && npm run prettier && tsc",
     "lint": "eslint . --ext .ts",
