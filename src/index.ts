@@ -15,15 +15,17 @@ client.once("ready", () => {
   /**
    * This will run every day at 0800.
    */
-  schedule("0 8 * * *", async () => {
-    const {
-      activeDailyCodingChallengeQuestion: { link },
-    } = await QOTDClient.getQuestionOfTheDay();
+  schedule("0 8 * * *", () => {
+    (async () => {
+      const {
+        activeDailyCodingChallengeQuestion: { link },
+      } = await QOTDClient.getQuestionOfTheDay();
 
-    if (channel?.isText()) {
-      channel.send(`${LEETCODE_BASE_URL}${link}`);
-    }
+      if (channel?.isText()) {
+        await channel.send(`${LEETCODE_BASE_URL}${link}`);
+      }
+    })().catch(console.error);
   });
 });
 
-client.login(token);
+client.login(token).catch(console.error);
