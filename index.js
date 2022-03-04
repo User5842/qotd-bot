@@ -11,6 +11,9 @@ client.once("ready", () => {
     (channel) => channel.name === "question-of-the-day"
   );
 
+  /**
+   * This will run every day at 0800.
+   */
   cron.schedule("0 8 * * *", async () => {
     const {
       activeDailyCodingChallengeQuestion: { link },
