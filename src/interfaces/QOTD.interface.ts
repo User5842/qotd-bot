@@ -3,7 +3,20 @@
  * question of the day.
  */
 export interface IQOTD {
-  activeDailyCodingChallengeQuestion: {
-    link: string;
+  readonly activeDailyCodingChallengeQuestion: {
+    /**
+     * Relative link to the question.
+     */
+    readonly link: string;
+
+    /**
+     * Question data bag.
+     */
+    readonly question: {
+      /**
+       * Normalized question title.
+       */
+      readonly title: string;
+    };
   };
 }

@@ -12,6 +12,9 @@ export class QOTDClient {
       {
         activeDailyCodingChallengeQuestion {
           link
+          question {
+            title
+          }
         }
       }
     `;
