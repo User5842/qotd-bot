@@ -4,7 +4,9 @@
   "description": "Discord Bot for the leetcode_reddit question of the day.",
   "private": true,
   "scripts": {
-    "build": "rimraf built && tsc",
+    "build": "rimraf built && npm run lint && npm run prettier && tsc",
+    "lint": "eslint . --ext .ts",
+    "prettier": "prettier --write .",
     "start": "node built/index.js"
   },
   "keywords": [
@@ -21,7 +23,11 @@
   },
   "devDependencies": {
     "@types/node-cron": "^3.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.13.0",
+    "@typescript-eslint/parser": "^5.13.0",
+    "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.5.0",
+    "prettier": "2.5.1",
     "rimraf": "^3.0.2",
     "typescript": "^4.6.2"
   }
