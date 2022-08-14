@@ -17,9 +17,9 @@ client.once("ready", () => {
     ?.toString() as string;
 
   /**
-   * This will run every day at 0800.
+   * This will run every day at 0100.
    */
-  schedule("0 8 * * *", () => {
+  schedule("0 1 * * *", () => {
     (async () => {
       const {
         activeDailyCodingChallengeQuestion: {
