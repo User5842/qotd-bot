@@ -1,15 +1,15 @@
-import { Client, Intents } from "discord.js";
+import { ChannelType, Client, GatewayIntentBits } from "discord.js";
 import { schedule } from "node-cron";
 
 import { token } from "./config.json";
 import { QOTDClient } from "./clients/qotd.client";
 import { LEETCODE_BASE_URL, QOTD_CHANNEL_ID } from "./constants/constants";
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.once("ready", () => {
   const channel = client.channels.cache.find(
-    (channel) => channel.id === QOTD_CHANNEL_ID
+    (channel) => channel.id === QOTD_CHANNEL_ID,
   );
 
   const emote = client.emojis.cache
@@ -17,9 +17,9 @@ client.once("ready", () => {
     ?.toString() as string;
 
   /**
-   * This will run every day at 0800.
+   * This will run every day at 0100.
    */
-  schedule("0 8 * * *", () => {
+  schedule("0 1 * * *", () => {
     (async () => {
       const {
         activeDailyCodingChallengeQuestion: {
@@ -28,7 +28,7 @@ client.once("ready", () => {
         },
       } = await QOTDClient.getQuestionOfTheDay();
 
-      if (channel?.isText()) {
+      if (channel?.type === ChannelType.GuildText) {
         const message = await channel.send(`
           I have been programmed to remind you to do your question of the day.\n_whirring noise_ Here you go: ${LEETCODE_BASE_URL}${link}.\nPlease. React with ${emote} once you have completed your task.`);
 
