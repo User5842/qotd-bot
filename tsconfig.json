@@ -1,13 +1,16 @@
 {
   "compilerOptions": {
     "allowJs": true,
-    "outDir": "./built",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "outDir": "./built",
     "resolveJsonModule": true,
     "rootDir": "src",
+    "sourceMap": true,
     "strict": true,
-    "target": "es5"
+    "target": "ESNext"
   },
   "include": ["./src/**/*"]
 }
